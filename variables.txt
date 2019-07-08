@@ -1,0 +1,12 @@
+
+cardNumber ( 0 = empty )
+	   ( 1 - 20 ) | cardAttack, cardHealth, cardCost, cardEffect, cardTexture, cardSelect,
+	   
+playerInfo (0,1) | Mana, Health, Turn, manaPerTurn, dead, turnEnd,
+
+fieldPosition (0,1) 0-6 for each player, fieldPositionSelected,
+
+hand | handPosition, handMaxCards
+
+
+
