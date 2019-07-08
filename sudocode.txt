@@ -1,30 +1,26 @@
 
 
-#window
+#window and networking
 
 set health to max and maxmana to min
-give one player the firt turn (random or set)
+give one player the first turn (random or set)
 	
 
-gui
+#gui
 	
 	for each position
 	check what type of card it is
 	bring out that texture
 	
-
-
-
-
-
-
-turn
+#turn
 	while turn = player1
 		if manamax< 10 
 		up manamax by 1 and make mana=manamax
 		check if card in hand selected/field selected/card on field selected/end turn selected
 		
-			if card in hand mana < playermana 			
+			if card in hand#window
+
+set health mana < playermana 			
 			choose a place to set it down
 			mana = mana - cardmana
 			make its cardUsed = 1 so it cant attack yet
@@ -32,19 +28,9 @@ turn
 			if card on field selected
 			choose a card to attack
 			make its cardUsed = 1 so it cant attack anymore	
-				attack texture
-				if health > attack				
-				chosencard newHealth = Health - attack
-				ourcard newHealth = ourHealth - chosenAttack
-				//
-				if attack > health
-				playerattack = attack - health	
-				ourcard newHealth = ourHealth - chosenAttack			
-				health = 0
-				playerhealth = health - playerattack
-				//
-				if nocards
-				playerhealth = health - attack
+				attack texture file whatever			
+				chosencard newHealth = chosencardsHealth - attack
+				ourcard newHealth = ourcardsHealth - chosenAttack
 			
 			if field selected
 			make it glow up
