@@ -20,7 +20,7 @@ give one player the first turn (random or set)
 		
 			if card in hand#window
 
-set health mana < playermana 			
+			set health mana < playermana 			
 			choose a place to set it down
 			mana = mana - cardmana
 			make its cardUsed = 1 so it cant attack yet
