@@ -47,6 +47,7 @@ class Card(pygame.sprite.Sprite):
 
 
 card1 = Card(pygame.image.load("2mana23.png"))
+highlight = pygame.image.load("HIGHLIGHT.png")
 card1.cardHealth = 3
 card1.cardAttack = 2
 card1.cardCost = 2
@@ -66,26 +67,22 @@ display_surface = pygame.display.set_mode((X, Y ))
 pygame.display.set_caption('Hearthstone Beta') 
 
 image = pygame.image.load('board.jpg')
-
+highlighted=False
 while True :
     display_surface.fill(white) 
     display_surface.blit(image, (0, 0))
     display_surface.blit(card1.image, hand1)
+    if(highlighted): 
+        display_surface.blit(highlight, card1.cardPosition)
     ev = pygame.event.get()
 
     for event in ev:
         # handle MOUSEBUTTONUP
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
-            print(pos)
-            print(card1.rect.topleft)
-            print(card1.rect.topright)
-            print(card1.rect.bottomleft)
-            print(card1.rect.bottomright)
-        
-            # get a list of all sprites that are under the mouse cursor
             if card1.image.get_rect(center=(card1.cardPosition[0]+100,card1.cardPosition[1]+125)).collidepoint(pos):
-                print("please!!!")
+                display_surface.blit(highlight, card1.cardPosition)
+                highlighted=not highlighted
             # do something with the clicked sprites...
 
 
