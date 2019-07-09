@@ -3,7 +3,11 @@ import sys
 import time
 
 screen = pygame.display.set_mode((640,320))
-       
+
+class Deck():
+    cardNumber = 0
+
+      
 class Card(pygame.sprite.Sprite):
     """The card class that will be used to give every card an ID"""
     cardHealth = 0
@@ -11,6 +15,7 @@ class Card(pygame.sprite.Sprite):
     cardAttack = 0
     cardTexture = 0
     cardEffect = 0
+    cardPosition = 0
     def cardAlive(self):
         if cardHealth <= 0:
             #kill self
@@ -27,6 +32,14 @@ card1.cardAttack = 1
 card1.cardCost = 1
 card1.cardTexture = 1
 card1.cardEffect = 1
+card1.cardPosition = 0
+
+
+
+deck1= Deck()
+deck1 = card1
+    
+
 
 #turns
 Turn = 0
@@ -35,9 +48,12 @@ while Turn == 0:
         if e.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if card1.image.get_rect().collidepoint(pygame.mouse.get_pos()):
+        if deck1.image.get_rect().collidepoint(pygame.mouse.get_pos()):
             if e.type == pygame.MOUSEBUTTONDOWN: 
-                
+                if deck1.cardPosition == 0:
+                    print("Where do you want to place?")
+                if deck1.cardPosition == 1:
+                    print("Who do you want to attack?")
         
         time.sleep(0.03)
         pygame.display.update()  
