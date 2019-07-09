@@ -34,6 +34,7 @@ class Card(pygame.sprite.Sprite):
     cardTexture = 0
     cardEffect = 0
     cardPosition = hand1
+    highlighted = False
     def cardAlive(self):
         if cardHealth <= 0:
             #kill self
@@ -55,7 +56,6 @@ card1.cardCost = 2
 card1.cardTexture = 1
 card1.cardEffect = 1
 card1.cardPosition = hand1
-card1.highlighted = False
 
 card2 = Card(pygame.image.load("2mana23.png"))
 card2.cardHealth = 3
@@ -64,7 +64,6 @@ card2.cardCost = 2
 card2.cardTexture = 1
 card2.cardEffect = 1
 card2.cardPosition = hand2
-card2.highlighted = False
 
 FieldCards = [card1,card2]
 
