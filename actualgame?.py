@@ -190,7 +190,7 @@ deck = FieldCards.copy()
 random.shuffle(deck)
 
 def render_gameboard():
-    # base game board
+    # base game board works :)
     display_surface.fill(white)
     display_surface.blit(board, (0, 0))
 
@@ -305,7 +305,6 @@ while True :
     player1.currentMana=player1.maxMana
     while playerTurn:
         render_gameboard()
-        print(gameBoard[0], gameBoard[1], gameBoard[2], gameBoard[3], gameBoard[4], gameBoard[5], gameBoard[6])
         # check for player input
         for event in pygame.event.get():
             if event.type == pygame.KEYUP :
