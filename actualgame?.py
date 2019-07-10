@@ -294,9 +294,12 @@ while True :
     playerTurn=True
     if player1.maxMana<10:
         player1.maxMana+=1
+    for c in FieldCards:
+        c.cardUsed = 0
     player1.currentMana=player1.maxMana
     while playerTurn:
         render_gameboard()
+        print(gameBoard[0], gameBoard[1], gameBoard[2], gameBoard[3], gameBoard[4], gameBoard[5], gameBoard[6])
         # check for player input
         for event in pygame.event.get():
             if event.type == pygame.KEYUP :
@@ -316,6 +319,34 @@ while True :
                         selected.highlighted = False
                         c.highlighted= True
                         selected = c
+                if selected != nullcard:
+                    if player1.currentMana >= selected.cardCost:       
+                        if gameBoard[7] == 0:
+                            if pos[0] > 50 and pos[0] < 250 and pos[1] > 389 and pos[1] < 639:            
+                                y = 0
+                                for x in gameBoard:
+                                    print (x,selected.cardID)
+                                    if x == selected.cardID:
+                                        gameBoard[y] = 0
+                                    y+=1    
+                                selected.cardPosition = board1 
+                                gameBoard[7] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                
+                                        
+                                selected = nullcard
+                                
+
+                                       
+                                for x in FieldCards:
+                                    x.highlighted=False
+                                
+
+                        
+
+
+
             if event.type == pygame.QUIT : 
                 pygame.quit()        
                 sys.exit()
