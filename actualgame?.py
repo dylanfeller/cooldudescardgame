@@ -8,6 +8,7 @@ class Card(pygame.sprite.Sprite):
     cardAttack = 0
     cardHealth = 0
     cardEffect = 0
+    handPosition=0
     cardPosition=(0,0)
     highlighted = False
     def cardAlive(self):
@@ -180,7 +181,7 @@ gameBoard = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 white = (255, 255, 255)
 X = 1680
 Y = 1050
-display_surface = pygame.display.set_mode((X, Y ))
+display_surface = pygame.display.set_mode((X, Y ), pygame.FULLSCREEN)
 pygame.display.set_caption('Hearthstone Beta')
 board = pygame.image.load('board.jpg')
 player1 = Player()
@@ -195,9 +196,7 @@ def render_gameboard():
 
     # render cards already existing
     for p in gameBoard:
-        if p==0:
-            break
-        elif p==1:
+        if p==1:
             display_surface.blit(card1.image, card1.cardPosition)
         elif p==2:
             display_surface.blit(card2.image, card2.cardPosition)
@@ -248,42 +247,49 @@ def draw():
         for x in FieldCards:
             if gameBoard[0] == x.cardID:
                 x.cardPosition = hand1
+                x.handPosition = 0
                 break
     elif gameBoard[1] == 0 :
         gameBoard[1] = deck.pop().cardID
         for x in FieldCards:
             if gameBoard[1] == x.cardID:
                 x.cardPosition = hand2
+                x.handPosition = 1
                 break
     elif gameBoard[2] == 0 :
         gameBoard[2] = deck.pop().cardID
         for x in FieldCards:
             if gameBoard[2] == x.cardID:
                 x.cardPosition = hand3
+                x.handPosition = 2
                 break
     elif gameBoard[3] == 0 :
         gameBoard[3] = deck.pop().cardID
         for x in FieldCards:
             if gameBoard[3] == x.cardID:
                 x.cardPosition = hand4
+                x.handPosition = 3
                 break
     elif gameBoard[4] == 0 :
         gameBoard[4] = deck.pop().cardID
         for x in FieldCards:
             if gameBoard[4] == x.cardID:
                 x.cardPosition = hand5
+                x.handPosition = 4
                 break
     elif gameBoard[5] == 0 :
         gameBoard[5] = deck.pop().cardID
         for x in FieldCards:
             if gameBoard[5] == x.cardID:
                 x.cardPosition = hand6
+                x.handPosition = 5
                 break
     elif gameBoard[6] == 0 :
         gameBoard[6] = deck.pop().cardID
         for x in FieldCards:
             if gameBoard[6] == x.cardID:
                 x.cardPosition = hand7
+                x.handPosition = 6
                 break    
 
 
@@ -323,12 +329,7 @@ while True :
                     if player1.currentMana >= selected.cardCost:       
                         if gameBoard[7] == 0:
                             if pos[0] > 50 and pos[0] < 250 and pos[1] > 389 and pos[1] < 639:            
-                                y = 0
-                                for x in gameBoard:
-                                    print (x,selected.cardID)
-                                    if x == selected.cardID:
-                                        gameBoard[y] = 0
-                                    y+=1    
+                                gameBoard[selected.handPosition] = 0
                                 selected.cardPosition = board1 
                                 gameBoard[7] = selected.cardID
                                 player1.currentMana -= selected.cardCost
@@ -352,3 +353,4 @@ while True :
                 sys.exit()
                 
         pygame.display.update()
+    pygame.display.update()
