@@ -15,6 +15,7 @@ class Card(pygame.sprite.Sprite):
             return False
     def __init__(self, IMAGE):
         pygame.sprite.Sprite.__init__(self)
+    
         self.image = IMAGE
         self.rect = self.image.get_rect(center=(self.cardPosition[0]+100, self.cardPosition[1]+125))
     def update(self):
