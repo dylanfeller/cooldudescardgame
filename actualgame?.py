@@ -185,7 +185,7 @@ pygame.display.set_caption('Hearthstone Beta')
 board = pygame.image.load('board.jpg')
 player1 = Player()
 player2 = Player()
-deck = FieldCards
+deck = FieldCards.copy()
 random.shuffle(deck)
 
 def render_gameboard():
@@ -237,37 +237,59 @@ def render_gameboard():
             display_surface.blit(card19.image, card19.cardPosition)
         elif p==20:
             display_surface.blit(card20.image, card20.cardPosition)
-
     
+    for c in FieldCards:
+        if(c.highlighted): 
+                display_surface.blit(highlight, c.cardPosition)
+
+def draw():
+    if gameBoard[0] == 0 :
+        gameBoard[0] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[0] == x.cardID:
+                x.cardPosition = hand1
+                break
+    elif gameBoard[1] == 0 :
+        gameBoard[1] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[1] == x.cardID:
+                x.cardPosition = hand2
+                break
+    elif gameBoard[2] == 0 :
+        gameBoard[2] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[2] == x.cardID:
+                x.cardPosition = hand3
+                break
+    elif gameBoard[3] == 0 :
+        gameBoard[3] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[3] == x.cardID:
+                x.cardPosition = hand4
+                break
+    elif gameBoard[4] == 0 :
+        gameBoard[4] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[4] == x.cardID:
+                x.cardPosition = hand5
+                break
+    elif gameBoard[5] == 0 :
+        gameBoard[5] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[5] == x.cardID:
+                x.cardPosition = hand6
+                break
+    elif gameBoard[6] == 0 :
+        gameBoard[6] = deck.pop().cardID
+        for x in FieldCards:
+            if gameBoard[6] == x.cardID:
+                x.cardPosition = hand7
+                break    
 
 
 while True :
-    ev = pygame.event.get()
     render_gameboard()
-
-    # player turn
-    # draw
-    if gameBoard[0] == 0 :
-        drawnCard = deck.pop()
-        gameBoard[0] = drawnCard.cardID
-        for x in FieldCards:
-            if drawnCard.cardID == x.cardID:
-                x.cardPosition = hand1
-                print("added first card to hand")
-    elif gameBoard[1] == 0 :
-        gameBoard[1] = deck.pop().cardID
-    elif gameBoard[2] == 0 :
-        gameBoard[2] = deck.pop().cardID
-    elif gameBoard[3] == 0 :
-        gameBoard[3] = deck.pop().cardID
-    elif gameBoard[4] == 0 :
-        gameBoard[4] = deck.pop().cardID
-    elif gameBoard[5] == 0 :
-        gameBoard[5] = deck.pop().cardID
-    elif gameBoard[6] == 0 :
-        gameBoard[6] = deck.pop().cardID
-
-    print(gameBoard[0])
+    draw()
 
     playerTurn=True
     if player1.maxMana<10:
@@ -276,24 +298,24 @@ while True :
     while playerTurn:
         render_gameboard()
         # check for player input
-        for event in ev:
+        for event in pygame.event.get():
             if event.type == pygame.KEYUP :
                 if event.key == pygame.K_SPACE :
                     playerTurn = False
                     selected = nullcard
+                    for x in FieldCards:
+                        x.highlighted=False
                 elif event.key == pygame.K_ESCAPE:                
                     pygame.quit()
                     sys.exit()
-            """
             if event.type == pygame.MOUSEBUTTONUP:
                 for c in FieldCards:
                     pos = pygame.mouse.get_pos()
                     if c.image.get_rect(center=(c.cardPosition[0]+100,c.cardPosition[1]+125)).collidepoint(pos):
                         display_surface.blit(highlight, c.cardPosition)
                         selected.highlighted = False
-                        c.highlighted=not c.highlighted
+                        c.highlighted= True
                         selected = c
-            """
             if event.type == pygame.QUIT : 
                 pygame.quit()        
                 sys.exit()
