@@ -198,45 +198,45 @@ while True :
         if p==0:
             break
         elif p==1:
-            display_surface.blit(card1, card1.cardPosition)
+            display_surface.blit(card1.image, card1.cardPosition)
         elif p==2:
-            display_surface.blit(card1, card2.cardPosition)
+            display_surface.blit(card2.image, card2.cardPosition)
         elif p==3:
-            display_surface.blit(card1, card3.cardPosition)
+            display_surface.blit(card3.image, card3.cardPosition)
         elif p==4:
-            display_surface.blit(card1, card4.cardPosition)
+            display_surface.blit(card4.image, card4.cardPosition)
         elif p==5:
-            display_surface.blit(card1, card5.cardPosition)
+            display_surface.blit(card5.image, card5.cardPosition)
         elif p==6:
-            display_surface.blit(card1, card6.cardPosition)
+            display_surface.blit(card6.image, card6.cardPosition)
         elif p==7:
-            display_surface.blit(card1, card7.cardPosition)
+            display_surface.blit(card7.image, card7.cardPosition)
         elif p==8:
-            display_surface.blit(card1, card8.cardPosition)
+            display_surface.blit(card8.image, card8.cardPosition)
         elif p==9:
-            display_surface.blit(card1, card9.cardPosition)
+            display_surface.blit(card9.image, card9.cardPosition)
         elif p==10:
-            display_surface.blit(card1, card10.cardPosition)
+            display_surface.blit(card10.image, card10.cardPosition)
         elif p==11:
-            display_surface.blit(card1, card11.cardPosition)
+            display_surface.blit(card11.image, card11.cardPosition)
         elif p==12:
-            display_surface.blit(card1, card12.cardPosition)
+            display_surface.blit(card12.image, card12.cardPosition)
         elif p==13:
-            display_surface.blit(card1, card13.cardPosition)
+            display_surface.blit(card13.image, card13.cardPosition)
         elif p==14:
-            display_surface.blit(card1, card14.cardPosition)
+            display_surface.blit(card14.image, card14.cardPosition)
         elif p==15:
-            display_surface.blit(card1, card15.cardPosition)
+            display_surface.blit(card15.image, card15.cardPosition)
         elif p==16:
-            display_surface.blit(card1, card16.cardPosition)
+            display_surface.blit(card16.image, card16.cardPosition)
         elif p==17:
-            display_surface.blit(card1, card17.cardPosition)
+            display_surface.blit(card17.image, card17.cardPosition)
         elif p==18:
-            display_surface.blit(card1, card18.cardPosition)
+            display_surface.blit(card18.image, card18.cardPosition)
         elif p==19:
-            display_surface.blit(card1, card19.cardPosition)
+            display_surface.blit(card19.image, card19.cardPosition)
         elif p==20:
-            display_surface.blit(card1, card20.cardPosition)
+            display_surface.blit(card20.image, card20.cardPosition)
 
     # player turn
     # draw
