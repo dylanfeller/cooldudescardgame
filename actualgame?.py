@@ -1,4 +1,4 @@
-import pygame, time, sys, random
+import pygame, time, sys, random, socket
 pygame.init()
 
 class Card(pygame.sprite.Sprite):
@@ -11,6 +11,7 @@ class Card(pygame.sprite.Sprite):
     handPosition=0
     cardPosition=(0,0)
     highlighted = False
+    cardUsed = 0
     def cardAlive(self):
         if cardHealth <= 0:
             return False
@@ -171,6 +172,127 @@ card20.cardCost = 2
 card20.cardAttack = 2
 card20.cardHealth = 3
 
+ecard1 = Card(pygame.image.load('2mana23.png'))
+ecard1.cardID = 1
+ecard1.cardCost = 2
+ecard1.cardAttack = 2
+ecard1.cardHealth = 3
+
+ecard2 = Card(pygame.image.load('2mana23.png'))
+ecard2.cardID = 2
+ecard2.cardCost = 2
+ecard2.cardAttack = 2
+ecard2.cardHealth = 3
+
+ecard3 = Card(pygame.image.load('2mana23.png'))
+ecard3.cardID = 3
+ecard3.cardCost = 2
+ecard3.cardAttack = 2
+ecard3.cardHealth = 3
+
+ecard4 = Card(pygame.image.load('2mana23.png'))
+ecard4.cardID = 4
+ecard4.cardCost = 2
+ecard4.cardAttack = 2
+ecard4.cardHealth = 3
+
+ecard5 = Card(pygame.image.load('2mana23.png'))
+ecard5.cardID = 5
+ecard5.cardCost = 2
+ecard5.cardAttack = 2
+ecard5.cardHealth = 3
+
+ecard6 = Card(pygame.image.load('2mana23.png'))
+ecard6.cardID = 6
+ecard6.cardCost = 2
+ecard6.cardAttack = 2
+ecard6.cardHealth = 3
+
+ecard7 = Card(pygame.image.load('2mana23.png'))
+ecard7.cardID = 7
+ecard7.cardCost = 2
+ecard7.cardAttack = 2
+ecard7.cardHealth = 3
+
+ecard8 = Card(pygame.image.load('2mana23.png'))
+ecard8.cardID = 8
+ecard8.cardCost = 2
+ecard8.cardAttack = 2
+ecard8.cardHealth = 3
+
+ecard9 = Card(pygame.image.load('2mana23.png'))
+ecard9.cardID = 9
+ecard9.cardCost = 2
+ecard9.cardAttack = 2
+ecard9.cardHealth = 3
+
+ecard10 = Card(pygame.image.load('2mana23.png'))
+ecard10.cardID = 10
+ecard10.cardCost = 2
+ecard10.cardAttack = 2
+ecard10.cardHealth = 3
+
+ecard11 = Card(pygame.image.load('2mana23.png'))
+ecard11.cardID = 11
+ecard11.cardCost = 2
+ecard11.cardAttack = 2
+ecard11.cardHealth = 3
+
+ecard12 = Card(pygame.image.load('2mana23.png'))
+ecard12.cardID = 12
+ecard12.cardCost = 2
+ecard12.cardAttack = 2
+ecard12.cardHealth = 3
+
+ecard13 = Card(pygame.image.load('2mana23.png'))
+ecard13.cardID = 13
+ecard13.cardCost = 2
+ecard13.cardAttack = 2
+ecard13.cardHealth = 3
+
+ecard14 = Card(pygame.image.load('2mana23.png'))
+ecard14.cardID = 14
+ecard14.cardCost = 2
+ecard14.cardAttack = 2
+ecard14.cardHealth = 3
+
+ecard15 = Card(pygame.image.load('2mana23.png'))
+ecard15.cardID = 15
+ecard15.cardCost = 2
+ecard15.cardAttack = 2
+ecard15.cardHealth = 3
+
+ecard16 = Card(pygame.image.load('2mana23.png'))
+ecard16.cardID = 16
+ecard16.cardCost = 2
+ecard16.cardAttack = 2
+ecard16.cardHealth = 3
+
+ecard17 = Card(pygame.image.load('2mana23.png'))
+ecard17.cardID = 17
+ecard17.cardCost = 2
+ecard17.cardAttack = 2
+ecard17.cardHealth = 3
+
+ecard18 = Card(pygame.image.load('2mana23.png'))
+ecard18.cardID = 18
+ecard18.cardCost = 2
+ecard18.cardAttack = 2
+ecard18.cardHealth = 3
+
+ecard19 = Card(pygame.image.load('2mana23.png'))
+ecard19.cardID = 19
+ecard19.cardCost = 2
+ecard19.cardAttack = 2
+ecard19.cardHealth = 3
+
+ecard20 = Card(pygame.image.load('2mana23.png'))
+ecard20.cardID = 20
+ecard20.cardCost = 2
+ecard20.cardAttack = 2
+ecard20.cardHealth = 3
+
+#start of code
 
 nullcard = Card(pygame.image.load('2mana23.png'))
 selected = nullcard 
@@ -195,7 +317,8 @@ def render_gameboard():
     display_surface.blit(board, (0, 0))
 
     # render cards already existing
-    for p in gameBoard:
+    p=0
+    while p<14:
         if p==1:
             display_surface.blit(card1.image, card1.cardPosition)
         elif p==2:
@@ -236,6 +359,49 @@ def render_gameboard():
             display_surface.blit(card19.image, card19.cardPosition)
         elif p==20:
             display_surface.blit(card20.image, card20.cardPosition)
+        p+=1
+    while p<21:
+        if p==1:
+            display_surface.blit(ecard1.image, ecard1.cardPosition)
+        elif p==2:
+            display_surface.blit(ecard2.image, ecard2.cardPosition)
+        elif p==3:
+            display_surface.blit(ecard3.image, ecard3.cardPosition)
+        elif p==4:
+            display_surface.blit(ecard4.image, ecard4.cardPosition)
+        elif p==5:
+            display_surface.blit(ecard5.image, ecard5.cardPosition)
+        elif p==6:
+            display_surface.blit(ecard6.image, ecard6.cardPosition)
+        elif p==7:
+            display_surface.blit(ecard7.image, ecard7.cardPosition)
+        elif p==8:
+            display_surface.blit(ecard8.image, ecard8.cardPosition)
+        elif p==9:
+            display_surface.blit(ecard9.image, ecard9.cardPosition)
+        elif p==10:
+            display_surface.blit(ecard10.image, ecard10.cardPosition)
+        elif p==11:
+            display_surface.blit(ecard11.image, ecard11.cardPosition)
+        elif p==12:
+            display_surface.blit(ecard12.image, ecard12.cardPosition)
+        elif p==13:
+            display_surface.blit(ecard13.image, ecard13.cardPosition)
+        elif p==14:
+            display_surface.blit(ecard14.image, ecard14.cardPosition)
+        elif p==15:
+            display_surface.blit(ecard15.image, ecard15.cardPosition)
+        elif p==16:
+            display_surface.blit(ecard16.image, ecard16.cardPosition)
+        elif p==17:
+            display_surface.blit(ecard17.image, ecard17.cardPosition)
+        elif p==18:
+            display_surface.blit(ecard18.image, ecard18.cardPosition)
+        elif p==19:
+            display_surface.blit(ecard19.image, ecard19.cardPosition)
+        elif p==20:
+            display_surface.blit(ecard20.image, ecard20.cardPosition)
+
     
     for c in FieldCards:
         if(c.highlighted): 
@@ -303,6 +469,7 @@ while True :
     for c in FieldCards:
         c.cardUsed = 0
     player1.currentMana=player1.maxMana
+    #player1 turn
     while playerTurn:
         render_gameboard()
         # check for player input
@@ -320,10 +487,11 @@ while True :
                 for c in FieldCards:
                     pos = pygame.mouse.get_pos()
                     if c.image.get_rect(center=(c.cardPosition[0]+100,c.cardPosition[1]+125)).collidepoint(pos):
-                        display_surface.blit(highlight, c.cardPosition)
-                        selected.highlighted = False
-                        c.highlighted= True
-                        selected = c
+                        if c.cardPosition != (0,0):
+                            display_surface.blit(highlight, c.cardPosition)
+                            selected.highlighted = False 
+                            c.highlighted= True
+                            selected = c
                 if selected != nullcard:
                     if player1.currentMana >= selected.cardCost:       
                         if gameBoard[7] == 0:
@@ -396,6 +564,12 @@ while True :
                                 selected = nullcard
                                 for x in FieldCards:
                                     x.highlighted=False
+                    if selected.cardUsed == 0:
+                        if gameBoard[14] != 0:
+                            if pos[0] > 50 and pos[0] < 250 and pos[1] > 128 and pos[1] < 378:
+                                #selected.cardHealth-= opponent.cardAttack
+                                #opponent.cardhealth-= selected.cardHealth
+                                break
 
             if event.type == pygame.QUIT : 
                 pygame.quit()        
