@@ -333,19 +333,69 @@ while True :
                                 gameBoard[7] = selected.cardID
                                 player1.currentMana -= selected.cardCost
                                 cardUsed = 1
-                                
-                                        
                                 selected = nullcard
-                                
-
-                                       
                                 for x in FieldCards:
                                     x.highlighted=False
-                                
-
-                        
-
-
+                        if gameBoard[8] == 0:
+                            if pos[0] > 266 and pos[0] < 466 and pos[1] > 389 and pos[1] < 639:            
+                                gameBoard[selected.handPosition] = 0
+                                selected.cardPosition = board2 
+                                gameBoard[8] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                selected = nullcard
+                                for x in FieldCards:
+                                    x.highlighted=False
+                        if gameBoard[9] == 0:
+                            if pos[0] > 482 and pos[0] < 682 and pos[1] > 389 and pos[1] < 639:            
+                                gameBoard[selected.handPosition] = 0
+                                selected.cardPosition = board3 
+                                gameBoard[9] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                selected = nullcard
+                                for x in FieldCards:
+                                    x.highlighted=False
+                        if gameBoard[10] == 0:
+                            if pos[0] > 696 and pos[0] < 896 and pos[1] > 389 and pos[1] < 639:            
+                                gameBoard[selected.handPosition] = 0
+                                selected.cardPosition = board4 
+                                gameBoard[10] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                selected = nullcard
+                                for x in FieldCards:
+                                    x.highlighted=False
+                        if gameBoard[11] == 0:
+                            if pos[0] > 909 and pos[0] < 1109 and pos[1] > 389 and pos[1] < 639:            
+                                gameBoard[selected.handPosition] = 0
+                                selected.cardPosition = board5 
+                                gameBoard[11] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                selected = nullcard
+                                for x in FieldCards:
+                                    x.highlighted=False
+                        if gameBoard[12] == 0:
+                            if pos[0] > 1123 and pos[0] < 1323 and pos[1] > 389 and pos[1] < 639:            
+                                gameBoard[selected.handPosition] = 0
+                                selected.cardPosition = board6 
+                                gameBoard[12] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                selected = nullcard
+                                for x in FieldCards:
+                                    x.highlighted=False
+                        if gameBoard[13] == 0:
+                            if pos[0] > 1336 and pos[0] < 1536 and pos[1] > 389 and pos[1] < 639:            
+                                gameBoard[selected.handPosition] = 0
+                                selected.cardPosition = board7 
+                                gameBoard[13] = selected.cardID
+                                player1.currentMana -= selected.cardCost
+                                cardUsed = 1
+                                selected = nullcard
+                                for x in FieldCards:
+                                    x.highlighted=False
 
             if event.type == pygame.QUIT : 
                 pygame.quit()        
