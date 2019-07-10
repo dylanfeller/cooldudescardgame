@@ -57,115 +57,115 @@ card1.cardAttack = 2
 card1.cardHealth = 3
 
 card2 = Card(pygame.image.load('2mana23.png'))
-card2.cardID = 1
+card2.cardID = 2
 card2.cardCost = 2
 card2.cardAttack = 2
 card2.cardHealth = 3
 
 card3 = Card(pygame.image.load('2mana23.png'))
-card3.cardID = 1
+card3.cardID = 3
 card3.cardCost = 2
 card3.cardAttack = 2
 card3.cardHealth = 3
 
 card4 = Card(pygame.image.load('2mana23.png'))
-card4.cardID = 1
+card4.cardID = 4
 card4.cardCost = 2
 card4.cardAttack = 2
 card4.cardHealth = 3
 
 card5 = Card(pygame.image.load('2mana23.png'))
-card5.cardID = 1
+card5.cardID = 5
 card5.cardCost = 2
 card5.cardAttack = 2
 card5.cardHealth = 3
 
 card6 = Card(pygame.image.load('2mana23.png'))
-card6.cardID = 1
+card6.cardID = 6
 card6.cardCost = 2
 card6.cardAttack = 2
 card6.cardHealth = 3
 
 card7 = Card(pygame.image.load('2mana23.png'))
-card7.cardID = 1
+card7.cardID = 7
 card7.cardCost = 2
 card7.cardAttack = 2
 card7.cardHealth = 3
 
 card8 = Card(pygame.image.load('2mana23.png'))
-card8.cardID = 1
+card8.cardID = 8
 card8.cardCost = 2
 card8.cardAttack = 2
 card8.cardHealth = 3
 
 card9 = Card(pygame.image.load('2mana23.png'))
-card9.cardID = 1
+card9.cardID = 9
 card9.cardCost = 2
 card9.cardAttack = 2
 card9.cardHealth = 3
 
 card10 = Card(pygame.image.load('2mana23.png'))
-card10.cardID = 1
+card10.cardID = 10
 card10.cardCost = 2
 card10.cardAttack = 2
 card10.cardHealth = 3
 
 card11 = Card(pygame.image.load('2mana23.png'))
-card11.cardID = 1
+card11.cardID = 11
 card11.cardCost = 2
 card11.cardAttack = 2
 card11.cardHealth = 3
 
 card12 = Card(pygame.image.load('2mana23.png'))
-card12.cardID = 1
+card12.cardID = 12
 card12.cardCost = 2
 card12.cardAttack = 2
 card12.cardHealth = 3
 
 card13 = Card(pygame.image.load('2mana23.png'))
-card13.cardID = 1
+card13.cardID = 13
 card13.cardCost = 2
 card13.cardAttack = 2
 card13.cardHealth = 3
 
 card14 = Card(pygame.image.load('2mana23.png'))
-card14.cardID = 1
+card14.cardID = 14
 card14.cardCost = 2
 card14.cardAttack = 2
 card14.cardHealth = 3
 
 card15 = Card(pygame.image.load('2mana23.png'))
-card15.cardID = 1
+card15.cardID = 15
 card15.cardCost = 2
 card15.cardAttack = 2
 card15.cardHealth = 3
 
 card16 = Card(pygame.image.load('2mana23.png'))
-card16.cardID = 1
+card16.cardID = 16
 card16.cardCost = 2
 card16.cardAttack = 2
 card16.cardHealth = 3
 
 card17 = Card(pygame.image.load('2mana23.png'))
-card17.cardID = 1
+card17.cardID = 17
 card17.cardCost = 2
 card17.cardAttack = 2
 card17.cardHealth = 3
 
 card18 = Card(pygame.image.load('2mana23.png'))
-card18.cardID = 1
+card18.cardID = 18
 card18.cardCost = 2
 card18.cardAttack = 2
 card18.cardHealth = 3
 
 card19 = Card(pygame.image.load('2mana23.png'))
-card19.cardID = 1
+card19.cardID = 19
 card19.cardCost = 2
 card19.cardAttack = 2
 card19.cardHealth = 3
 
 card20 = Card(pygame.image.load('2mana23.png'))
-card20.cardID = 1
+card20.cardID = 20
 card20.cardCost = 2
 card20.cardAttack = 2
 card20.cardHealth = 3
@@ -238,10 +238,22 @@ def render_gameboard():
         elif p==20:
             display_surface.blit(card20.image, card20.cardPosition)
 
+    
+
+
+while True :
+    ev = pygame.event.get()
+    render_gameboard()
+
     # player turn
     # draw
     if gameBoard[0] == 0 :
-        gameBoard[0] = deck.pop().cardID
+        drawnCard = deck.pop()
+        gameBoard[0] = drawnCard.cardID
+        for x in FieldCards:
+            if drawnCard.cardID == x.cardID:
+                x.cardPosition = hand1
+                print("added first card to hand")
     elif gameBoard[1] == 0 :
         gameBoard[1] = deck.pop().cardID
     elif gameBoard[2] == 0 :
@@ -255,10 +267,7 @@ def render_gameboard():
     elif gameBoard[6] == 0 :
         gameBoard[6] = deck.pop().cardID
 
-
-while True :
-    ev = pygame.event.get()
-    render_gameboard()
+    print(gameBoard[0])
 
     playerTurn=True
     if player1.maxMana<10:
@@ -272,6 +281,10 @@ while True :
                 if event.key == pygame.K_SPACE :
                     playerTurn = False
                     selected = nullcard
+                elif event.key == pygame.K_ESCAPE:                
+                    pygame.quit()
+                    sys.exit()
+            """
             if event.type == pygame.MOUSEBUTTONUP:
                 for c in FieldCards:
                     pos = pygame.mouse.get_pos()
@@ -280,12 +293,9 @@ while True :
                         selected.highlighted = False
                         c.highlighted=not c.highlighted
                         selected = c
-            pygame.display.update()
-            for event in ev : 
-                if event.type == pygame.QUIT : 
-                    pygame.quit()        
-                    sys.exit()
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:                
-                        pygame.quit()
-                        sys.exit()
+            """
+            if event.type == pygame.QUIT : 
+                pygame.quit()        
+                sys.exit()
+                
+        pygame.display.update()
